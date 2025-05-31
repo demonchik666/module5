@@ -1,6 +1,6 @@
 #Task 4
 
-def input_error(func):
+def input_error(func): # Decorator to handle input errors
     def inner(*args, **kwargs):
         try:
             return func(*args, **kwargs)
@@ -12,19 +12,19 @@ def input_error(func):
             return "Contact not found."
     return inner
 
-def parse_input(user_input):
+def parse_input(user_input): # Function to parse user input
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     return cmd, *args
 
 @input_error
-def add_contact(args, contacts):
+def add_contact(args, contacts): # Function to add a contact
     name, phone = args
     contacts[name] = phone
     return "Contact added."
 
 @input_error
-def change_contact(args, contacts):
+def change_contact(args, contacts): # Function to change a contact's phone number
     name, new_phone = args
     if name in contacts: # Check if the contact exists
         contacts[name] = new_phone
@@ -33,13 +33,13 @@ def change_contact(args, contacts):
         return "Contact not found."
     
 @input_error
-def phone_number(args, contacts):
+def phone_number(args, contacts):  # Function to get a contact's phone number
     if args[0] in contacts: # Check if the contact exists
         return contacts[args[0]]
     else:
         return "Contact not found."
 
-def print_all(contacts):
+def print_all(contacts): # Function to print all contacts
     if len(contacts) == 0: # Check if there are any contacts
         return "No contacts found."
     else:
