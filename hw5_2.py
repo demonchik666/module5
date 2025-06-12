@@ -2,7 +2,7 @@ from typing import Callable
 
 def generator_numbers(text: str): # Generator function to yield numbers from text
     words = text.split()
-    for word in words:
+    for word in words[1: -1]:
         try:
             yield float(word) # Convert word to float
         except ValueError:
