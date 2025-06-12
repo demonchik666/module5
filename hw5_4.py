@@ -11,7 +11,7 @@ def input_error(func): # Decorator to handle input errors
         except KeyError:
             return "Contact not found."
     return inner
-
+@input_error
 def parse_input(user_input): # Function to parse user input
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
